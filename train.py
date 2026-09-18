@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from dataset import load_data
+from metrics import calculate_mae
 from model import estimate_price, normalize_mileage
 from model_io import save_model_parameters
 from visualization import TrainingVisualizer
@@ -164,6 +165,10 @@ def main():
     print(f"Converged after {iterations} iterations")
     print(f"Trained theta0: {theta0}")
     print(f"Trained theta1: {theta1}")
+
+    # Calcule l'écart moyen entre les prédictions et les prix réels.
+    mae = calculate_mae(predictions, prices)
+    print(f"Mean absolute error: {mae:.2f} euros")
 
     # Sauvegarde le modèle et les bornes utilisées pour la normalisation.
     save_model_parameters(

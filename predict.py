@@ -39,9 +39,10 @@ def main():
     # Une valeur extérieure au dataset reste calculable, mais sera extrapolée.
     if mileage < min_mileage or mileage > max_mileage:
         print(
-            "Warning: mileage is outside the training range "
-            f"[{min_mileage:.0f}, {max_mileage:.0f}]"
+            "Warning: the mileage is outside the training range "
+            f"[{min_mileage:.0f}, {max_mileage:.0f}] km."
         )
+        print("The model is extrapolating, so this prediction is less reliable.")
 
     # Applique exactement la même normalisation que pendant l'entraînement.
     normalized_mileage = normalize_mileage(
